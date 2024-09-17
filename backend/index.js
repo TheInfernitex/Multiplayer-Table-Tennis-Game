@@ -6,6 +6,7 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
 const cors = require("cors");
+const path = require('path');
 
 // Use the PORT environment variable or default to 3000
 const PORT = process.env.PORT || 3000;
@@ -16,10 +17,12 @@ app.use(
   })
 );
 
-app.use(express.static('../public')); // Serve static files from the public directory
+// Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, '../public')));
 
+// Serve the main HTML file
 app.get("/", (req, res) => {
-  res.send("<h1>The ONLINE TABLE TENNIS GAME SERVER</h1>");
+  res.sendFile(path.join(__dirname, '../public', 'index.html'));
 });
 
 let rooms = [];
