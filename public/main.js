@@ -20,7 +20,7 @@ let isGameStarted = false;
 let playerNo = 0;
 let roomID;
 
-const socket = io("http://localhost:3000", {
+const socket = io("https://multiplayer-table-tennis-game.vercel.app/", {
   transports: ["websocket"],
 });
 
