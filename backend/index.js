@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const app = express();
 const http = require("http");
@@ -15,7 +16,7 @@ app.use(
   })
 );
 
-app.use(express.static('public')); // Serve static files from the public directory
+app.use(express.static('../public')); // Serve static files from the public directory
 
 app.get("/", (req, res) => {
   res.send("<h1>The ONLINE TABLE TENNIS GAME SERVER</h1>");
