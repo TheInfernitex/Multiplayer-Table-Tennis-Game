@@ -5,13 +5,17 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
 const cors = require("cors");
-const { futimesSync } = require("fs");
+
+// Use the PORT environment variable or default to 3000
+const PORT = process.env.PORT || 3000;
 
 app.use(
   cors({
     origin: "*",
   })
 );
+
+app.use(express.static('public')); // Serve static files from the public directory
 
 app.get("/", (req, res) => {
   res.send("<h1>The ONLINE TABLE TENNIS GAME SERVER</h1>");
@@ -34,7 +38,7 @@ io.on("connection", (socket) => {
       socket.join(room.id);
       socket.emit("playerNo", 2);
 
-      // add player to room
+      // Add player to room
       room.players.push({
         socketID: socket.id,
         playerNo: 2,
@@ -43,13 +47,13 @@ io.on("connection", (socket) => {
         y: 200,
       });
 
-      // send message to room
+      // Send message to room
       io.to(room.id).emit("startingGame");
 
       setTimeout(() => {
         io.to(room.id).emit("startedGame", room);
 
-        // start game
+        // Start game
         startGame(room);
       }, 3000);
     } else {
@@ -97,7 +101,7 @@ io.on("connection", (socket) => {
       }
     }
 
-    // update rooms
+    // Update rooms
     rooms = rooms.map((r) => {
       if (r.id === room.id) {
         return room;
@@ -123,14 +127,14 @@ function startGame(room) {
     room.ball.x += room.ball.dx * 5;
     room.ball.y += room.ball.dy * 5;
 
-    // check if ball hits player 1
+    // Check if ball hits player 1
     if (
       room.ball.x < 110 &&
       room.ball.y > room.players[0].y &&
       room.ball.y < room.players[0].y + 60
     ) {
       room.ball.dx = 1;
-      // change ball direction
+      // Change ball direction
       if (room.ball.y < room.players[0].y + 30) {
         room.ball.dy = -1;
       } else if (room.ball.y > room.players[0].y + 30) {
@@ -140,14 +144,14 @@ function startGame(room) {
       }
     }
 
-    // check if ball hits player 2
+    // Check if ball hits player 2
     if (
       room.ball.x > 690 &&
       room.ball.y > room.players[1].y &&
       room.ball.y < room.players[1].y + 60
     ) {
       room.ball.dx = -1;
-      // change ball direction
+      // Change ball direction
       if (room.ball.y < room.players[1].y + 30) {
         room.ball.dy = -1;
       } else if (room.ball.y > room.players[1].y + 30) {
@@ -157,12 +161,12 @@ function startGame(room) {
       }
     }
 
-    // up and down walls
+    // Up and down walls
     if (room.ball.y < 5 || room.ball.y > 490) {
       room.ball.dy *= -1;
     }
 
-    // left and right walls
+    // Left and right walls
     if (room.ball.x < 7) {
       room.players[1].score += 1;
       room.ball.x = 395;
@@ -197,6 +201,6 @@ function startGame(room) {
   }, 1000 / 60);
 }
 
-server.listen(3000, () => {
-  console.log("listening on *:3000");
+server.listen(PORT, () => {
+  console.log(`listening on *:${PORT}`);
 });
