@@ -1,5 +1,5 @@
 import { io } from "https://cdn.socket.io/4.4.1/socket.io.esm.min.js";
-
+require("dotenv").config();
 import Ball from "./ball.js";
 import Player from "./player.js";
 
@@ -125,15 +125,13 @@ function draw() {
   ctx.stroke();
 }
 
-
-document.addEventListener("DOMContentLoaded", function() {
-  const audio = document.getElementById('background-audio');
+document.addEventListener("DOMContentLoaded", function () {
+  const audio = document.getElementById("background-audio");
   audio.play();
 
-  document.body.addEventListener('click', function() {
-      if (audio.paused) {
-          audio.play();
-      }
+  document.body.addEventListener("click", function () {
+    if (audio.paused) {
+      audio.play();
+    }
   });
 });
-
