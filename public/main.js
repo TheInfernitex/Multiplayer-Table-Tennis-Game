@@ -1,5 +1,4 @@
 import { io } from "https://cdn.socket.io/4.4.1/socket.io.esm.min.js";
-require("dotenv").config();
 import Ball from "./ball.js";
 import Player from "./player.js";
 
@@ -20,7 +19,9 @@ let isGameStarted = false;
 let playerNo = 0;
 let roomID;
 
-const socket = io(process.env.SOCKET_URL || "http://localhost:3000", {
+const SOCKET_URL = "https://multiplayer-table-tennis-game.onrender.com";
+
+const socket = io(SOCKET_URL || "http://localhost:3000", {
   transports: ["websocket"],
 });
 
