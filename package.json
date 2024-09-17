@@ -1,15 +1,12 @@
 {
-  "name": "backend",
+  "name": "project-name",
   "version": "1.0.0",
-  "description": "Backend for the Online Table Tennis Game",
-  "main": "index.js",
+  "description": "Description of the project",
+  "main": "backend/index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node backend/index.js",
+    "dev": "nodemon backend/index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
