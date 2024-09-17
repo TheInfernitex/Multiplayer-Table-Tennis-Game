@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Table Tennis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 id="heading">
+            ONLINE TABLE TENNIS
+        </h1>
+        <p id="para">Score 10 to win!</p>
+        <div class="game">
+            <canvas id="canvas" width="800" height="500"></canvas>
+
+            <p id="message"> </p>
+            <button id="startBtn">
+                START GAME
+            </button>
+        </div>
+    </div>
+
+    <audio id="background-audio" loop>
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="./main.js" type="module"></script>
+</body>
+
+</html>

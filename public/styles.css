@@ -1,0 +1,76 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: rgba(0, 0, 0, 0.903);
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    
+    font-family: "Play", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game{
+    position: relative;
+}
+
+#heading {
+    text-align: center;
+    font-size: 48px;
+    color:white;
+}
+#para{
+    color:white;
+    text-align: center;
+}
+#canvas {
+    margin-top: 10px;
+    border-radius: 10px;
+    background-image: url('table_design.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: black;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    font-weight: 700;
+}
+
+#startBtn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 20px;
+    transform: translate(-50%, -50%);
+    background-color: black;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 10px 20px;
+    color: white;
+}
+
+#startBtn:hover {
+    filter: brightness(0.8);
+}
